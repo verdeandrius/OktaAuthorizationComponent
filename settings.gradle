@@ -1,0 +1,2 @@
+include ':app', ':oktacomponentlibrary'
+rootProject.name='OktaAuthorization'
