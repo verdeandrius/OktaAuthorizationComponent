@@ -28,10 +28,10 @@ dependencies {
 ``` 
 
 **3. For each enviroment, add the buildConfigField espected:**
-* *-CLIENT_ID* *
-* *-REDIRECT_URI* *
-* *-END_SESSION_REDIRECT_URI* *
-* *-DISCOVERY_URI* *
+* *CLIENT_ID* *
+* *REDIRECT_URI* *
+* *END_SESSION_REDIRECT_URI* *
+* *DISCOVERY_URI* *
 
 ```Gradle
 staging {
