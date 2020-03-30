@@ -1,5 +1,7 @@
-# OktaAuthorizationComponent
-[![](https://jitpack.io/v/verdeandrius/OktaAuthorizationComponent.svg)](https://jitpack.io/#verdeandrius/OktaAuthorizationComponent)
+# Okta Authorization Component
+
+
+**Last version: ** [![](https://jitpack.io/v/verdeandrius/OktaAuthorizationComponent.svg)](https://jitpack.io/#verdeandrius/OktaAuthorizationComponent)
 
 To use this component follow the next steps: 
 
