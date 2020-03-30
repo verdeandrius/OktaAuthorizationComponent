@@ -18,18 +18,20 @@ allprojects {
 	       }
 	    }
 ```  
+
 **2. Add to build.gradle(app):**
 ```Gradle
 dependencies {
 	        implementation 'com.github.verdeandrius:OktaAuthorizationComponent:0.1.0'
 		implementation 'com.okta.android:oidc-androidx:1.0.11'
 	     }
-```  
+``` 
+
 **3. For each enviroment, add the buildConfigField espected:**
-- * *CLIENT_ID
-- * *REDIRECT_URI
-- * *END_SESSION_REDIRECT_URI
-- * *DISCOVERY_URI
+- * *CLIENT_ID* *
+- * *REDIRECT_URI* *
+- * *END_SESSION_REDIRECT_URI* *
+- * *DISCOVERY_URI* *
 
 ```Gradle
 staging {
@@ -57,7 +59,7 @@ private fun initializeOkta(){
     }
 ```    
 
-**5. Inside onCreate method set the result callback for each authorization action (Login and Logout):
+**5. Inside onCreate method set the result callback for each authorization action (Login and Logout):**
 ```Kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,7 +93,7 @@ private fun setOktaLoginResult(){
 }
 ```
 
-**6. Inside onClickListener of login button, make the call to "doLogin":
+**6. Inside onClickListener of login button, make the call to "doLogin":**
 ```Kotlin
 	
     //Buttons
