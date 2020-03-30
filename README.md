@@ -3,7 +3,7 @@
 
 To use this component follow the next steps: 
 
-1. Add to build.gradle(Project):
+1. **Add to build.gradle(Project):**
 ```
 allprojects {
 		repositories {
@@ -11,15 +11,16 @@ allprojects {
 			maven { url 'https://jitpack.io' }
 		}
 	}
-  
-2. Add to build.gradle(app):
-
+```  
+2. **Add to build.gradle(app):**
+```
 dependencies {
 	        implementation 'com.github.verdeandrius:OktaAuthorizationComponent:0.1.0'
 		implementation 'com.okta.android:oidc-androidx:1.0.11'
 	}
-  
-3. Place in your first activity the Okta configuration params and start the component initialization: 
+```  
+3. **Place in your first activity the Okta configuration params and start the component initialization:** 
+```
 private fun initializeOkta(){
         OktaAuthorization.setOktaConfigParams(
             BuildConfig.OKTA_CLIENT_ID,
@@ -30,3 +31,4 @@ private fun initializeOkta(){
         )
         OktaAuthorization.initialize()
     }
+```    
