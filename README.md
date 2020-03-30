@@ -1,9 +1,10 @@
 # OktaAuthorizationComponent
+[![](https://jitpack.io/v/verdeandrius/OktaAuthorizationComponent.svg)](https://jitpack.io/#verdeandrius/OktaAuthorizationComponent)
 
 To use this component follow the next steps: 
 
-```1. Add to build.gradle(Project):
-
+1. Add to build.gradle(Project):
+```
 allprojects {
 		repositories {
 			...
