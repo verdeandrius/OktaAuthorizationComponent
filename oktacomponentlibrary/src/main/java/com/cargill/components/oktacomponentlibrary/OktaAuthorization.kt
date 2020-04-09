@@ -1,4 +1,4 @@
-package com.cargill.poultrylatam.features.components.oktaauthorization
+package com.cargill.components.oktacomponentlibrary
 
 import android.app.Activity
 import android.content.Context
@@ -6,21 +6,26 @@ import android.graphics.Color
 import android.util.Log
 import androidx.annotation.ColorInt
 import androidx.annotation.Nullable
+import com.cargill.components.oktacomponentlibrary.network.RetrofitComponent
+import com.cargill.poultrylatam.features.components.oktaauthorization.OnLoginResultListener
+import com.cargill.poultrylatam.features.components.oktaauthorization.OnLogoutResultListener
 import com.okta.oidc.*
 import com.okta.oidc.clients.web.WebAuthClient
 import com.okta.oidc.storage.SharedPreferenceStorage
 import com.okta.oidc.util.AuthorizationException
+import org.json.JSONObject
 import java.util.concurrent.Executors
 
 object OktaAuthorization {
 
+    lateinit var config: OIDCConfig
     lateinit var onLoginResult: OnLoginResultListener
     lateinit var onLogoutResultListener: OnLogoutResultListener
     private lateinit var client: WebAuthClient
-    private lateinit var config: OIDCConfig
+    private lateinit var tokenEndpoint: String
     private lateinit var context: Context
 
-    fun initialize(@Nullable @ColorInt webViewColor : Int = Color.DKGRAY) {
+    fun initialize(@Nullable @ColorInt webViewColor: Int = Color.DKGRAY) {
         client = Okta.WebAuthBuilder()
             .withConfig(config)
             .withContext(context.applicationContext)
@@ -81,6 +86,28 @@ object OktaAuthorization {
             }
 
         })
+    }
+
+    /**
+     * @Return Success response return new access_token, failure response return an empty string
+     */
+
+    suspend fun doRefreshToken(
+        refreshToken: String,
+        issuerUri: String,
+        clientId: String
+    ): String? {
+        val serviceResponse = RetrofitComponent().webService(issuerUri)
+            .callRefreshToken(refreshToken, clientId)
+        return if (serviceResponse.isSuccessful) {
+
+            @Suppress("BlockingMethodInNonBlockingContext")
+            val refreshTokenJsonResponse= JSONObject(serviceResponse.body()?.string()!!)
+
+            refreshTokenJsonResponse.getString("access_token")
+        } else {
+            null
+        }
     }
 
     private fun registerCallbackForAuthActions(activity: Activity) {
