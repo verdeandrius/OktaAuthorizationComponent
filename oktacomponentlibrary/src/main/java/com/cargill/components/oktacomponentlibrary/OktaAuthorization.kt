@@ -7,7 +7,6 @@ import android.util.Log
 import androidx.annotation.ColorInt
 import androidx.annotation.Nullable
 import com.cargill.components.oktacomponentlibrary.network.RetrofitComponent
-import com.cargill.poultrylatam.features.components.oktaauthorization.OnLogoutResultListener
 import com.okta.oidc.*
 import com.okta.oidc.clients.web.WebAuthClient
 import com.okta.oidc.storage.SharedPreferenceStorage
@@ -117,7 +116,7 @@ object OktaAuthorization {
                 when (result) {
                     AuthorizationStatus.AUTHORIZED -> {
                         try {
-                            Log.d("AuthorizationStatus -> onSuccess", "Signed out!")
+                            Log.d("AuthorizationStatus -> onSuccess", "Login success!")
                             onLoginResult.onLoginResult(
                                 client
                             )
@@ -150,7 +149,6 @@ object OktaAuthorization {
                     "onError", error!!.error +
                             msg, error
                 )
-                println(">>> OKTA ERROR:\n" + msg!!)
                 onLoginResult.onErrorResult(msg, error)
             }
 
