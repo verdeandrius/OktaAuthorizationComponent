@@ -7,7 +7,6 @@ import android.util.Log
 import androidx.annotation.ColorInt
 import androidx.annotation.Nullable
 import com.cargill.components.oktacomponentlibrary.network.RetrofitComponent
-import com.cargill.poultrylatam.features.components.oktaauthorization.OnLoginResultListener
 import com.cargill.poultrylatam.features.components.oktaauthorization.OnLogoutResultListener
 import com.okta.oidc.*
 import com.okta.oidc.clients.web.WebAuthClient
@@ -134,12 +133,16 @@ object OktaAuthorization {
                             client
                         )
                     }
+
+                    else -> {
+                        onLoginResult.onErrorResult("CANCELED, ERROR, EMAIL_VERIFICATION_AUTHENTICATED, EMAIL_VERIFICATION_UNAUTHENTICATED", null)
+                    }
                 }
             }
 
             override fun onCancel() {
-                Log.d("onCancel", "CANCELED!")
-
+                Log.d("onCancel", "Web View was closed before complete the login process. CANCELED!")
+                onLoginResult.onWebViewCanceled()
             }
 
             override fun onError(msg: String?, error: AuthorizationException?) {
