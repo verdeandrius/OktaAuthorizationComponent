@@ -7,7 +7,7 @@ class RefreshTokenInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
 
-        //Added token to each request
+        //Added headers to the request
         val request = chain.request().newBuilder()
             .addHeader("Content-Type", "application/x-www-form-urlencoded")
             .addHeader("Accept", "application/json")

@@ -7,6 +7,7 @@ import retrofit2.http.*
 
 interface RefreshTokenAPI {
 
+    //Only are needed two params (ClientId and refreshToken)
     @FormUrlEncoded
     @POST("v1/token/")
     suspend fun callRefreshToken(

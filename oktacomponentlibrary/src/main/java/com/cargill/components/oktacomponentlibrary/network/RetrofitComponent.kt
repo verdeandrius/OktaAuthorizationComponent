@@ -30,8 +30,7 @@ class RetrofitComponent {
             .build()
     }
 
-    fun webService(issuerUri: String): RefreshTokenAPI =
-        provideRetrofitComponent(issuerUri).create(RefreshTokenAPI::class.java)
+    fun webService(issuerUri: String): RefreshTokenAPI = provideRetrofitComponent(issuerUri).create(RefreshTokenAPI::class.java)
 
 
 

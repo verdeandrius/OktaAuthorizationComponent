@@ -89,7 +89,8 @@ object OktaAuthorization {
     }
 
     /**
-     * @Return Success response return new access_token, failure response return an empty string
+     * @return Success response return new access_token
+     * @return failure response return an empty string
      */
 
     suspend fun doRefreshToken(
