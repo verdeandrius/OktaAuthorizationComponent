@@ -97,7 +97,7 @@ object OktaAuthorization {
         clientId: String
     ): String? {
         val serviceResponse = RetrofitComponent().webService(issuerUri)
-            .callRefreshToken(refreshToken, clientId)
+            .callRefreshToken(clientId, refreshToken)
         return if (serviceResponse.isSuccessful) {
 
             @Suppress("BlockingMethodInNonBlockingContext")
